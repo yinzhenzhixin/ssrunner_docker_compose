@@ -1,0 +1,28 @@
+capabilities:
+  browserName: "chrome"
+  chromeOptions.binary: "/chromedriver"
+  chromeOptions.args: "[no-sandbox, headless, disable-gpu, disable-dev-shm-usage]"
+#baseUrl: "https://www.seleniumhq.org"
+#server: "http://localhost:4444/wd/hub"
+# # direct proxy: Configures WebDriver to bypass all browser proxies
+# proxyType: direct
+# # manual proxy: Manually configures the browser proxy
+# proxyType: manual
+# proxyOptions:
+#   http: http://localhost:434
+#   https: http://localhost:434
+#   ftp: http://localhost:434
+#   bypass:
+#     - http://localhost:8080
+#     - http://host:434
+#     - http://somethingelse:32
+# # pac proxy: Configures WebDriver to configure the browser proxy using the PAC file at the given URL
+# proxyType: pac
+# proxyOptions: http://localhost/pac
+# # socks proxy: Creates a proxy configuration for a socks proxy
+# proxyType: socks
+# proxyOptions:
+#   socksProxy: localhost:434
+#   socksVersion: 5
+# # system proxy: Configures WebDriver to use the current system's proxy
+# proxyType: system

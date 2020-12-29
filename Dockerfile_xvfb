@@ -1,0 +1,23 @@
+FROM alpine
+
+LABEL Author="Beyond Ma <yinzhenzhixin@gmail.com>"
+
+
+RUN apk update
+
+# nstall dependencies
+RUN apk add --no-cache xvfb x11vnc supervisor
+
+# Configure Supervisor
+ADD ./etc/supervisord.conf /etc/
+ADD ./etc/supervisor/conf.d/xvfb.conf /etc/supervisor/conf.d/xvfb.conf
+ADD ./etc/supervisor/conf.d/x11vnc.conf /etc/supervisor/conf.d/x11vnc.conf
+
+# Default configuration
+ENV DISPLAY :20.0
+ENV SCREEN_GEOMETRY "1440x900x24"
+ENV RFB_PORT 5901
+
+VOLUME [ "/var/log/supervisor" ]
+
+CMD ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]

@@ -1,0 +1,16 @@
+FROM node:alpine
+
+LABEL Author="Beyond Ma <yinzhenzhixin@gmail.com>"
+
+
+ENV CHROMEDRIVER_PORT 9527
+ENV SELE_SIDE_RUNNER_TEST_FOLDER "sides"
+ENV SELE_SIDE_RUNNER_OUT_FOLDER "reports"
+
+# Install selenium-side-runner
+RUN npm install -g selenium-side-runner && \
+	mkdir -p /selenium_side_runner/$SELE_SIDE_RUNNER_TEST_FOLDER
+
+ADD ssrunner_trigger.sh /selenium_side_runner/ssrunner_trigger.sh
+
+RUN chmod +x /selenium_side_runner/ssrunner_trigger.sh

@@ -1,0 +1,25 @@
+FROM yinzhenzhixin/xvfb_alpine
+
+LABEL Author="Beyond Ma <yinzhenzhixin@gmail.com>"
+
+
+# Install chromium
+RUN apk add --no-cache chromium chromium-chromedriver
+
+# Create user for test automation
+RUN adduser -D -g users automation && \
+	mkdir -p /home/automation && \
+	chown automation:users /home/automation
+
+# Configure Supervisor
+ADD ./etc/supervisor/conf.d/chromedriver.conf /etc/supervisor/conf.d/chromedriver.conf
+
+# Default configuration
+ENV CHROMEDRIVER_PORT 9527
+ENV CHROMEDRIVER_WHITELISTED_IPS "127.0.0.1"
+ENV CHROMEDRIVER_URL_BASE ""
+ENV CHROMEDRIVER_EXTRA_ARGS ""
+
+EXPOSE $CHROMEDRIVER_PORT
+
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]

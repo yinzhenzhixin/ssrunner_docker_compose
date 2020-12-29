@@ -1,0 +1,74 @@
+{
+  "id": "e3cd8033-ab1f-4b83-9e24-7dd36c36ec09",
+  "version": "2.0",
+  "name": "baidu_search",
+  "url": "http://www.baidu.com",
+  "tests": [{
+    "id": "e1f73ab3-c27d-43a3-b507-1c177b9b307b",
+    "name": "web_search",
+    "commands": [{
+      "id": "eea81ce5-2efe-417f-833e-d48c430cbc08",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0e616463-62a9-4d13-9aab-9fdbba1dcfed",
+      "comment": "",
+      "command": "type",
+      "target": "id=kw",
+      "targets": [
+        ["id=kw", "id"],
+        ["name=wd", "name"],
+        ["css=#kw", "css:finder"],
+        ["xpath=//input[@id='kw']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/span/input", "xpath:idRelative"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": "selenium testing"
+    }, {
+      "id": "ca63fe62-e91c-41b0-80bc-96055660a6eb",
+      "comment": "",
+      "command": "click",
+      "target": "id=su",
+      "targets": [
+        ["id=su", "id"],
+        ["css=#su", "css:finder"],
+        ["xpath=//input[@id='su']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/span[2]/input", "xpath:idRelative"],
+        ["xpath=//span[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe9fc41d-959b-469a-99d8-56159898d20f",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "xpath=//span[@class='nums_text']",
+      "targets": [
+        ["css=.nums_text", "css:finder"],
+        ["xpath=//div[@id='container']/div[2]/div/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'百度为您找到相关结果约8,320,000个')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "8c01b919-d3db-4004-a5c5-17490a3ea587",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c8018e85-1b77-4ab4-b034-9686492ed70d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e1f73ab3-c27d-43a3-b507-1c177b9b307b"]
+  }],
+  "urls": ["http://www.baidu.com/"],
+  "plugins": []
+}

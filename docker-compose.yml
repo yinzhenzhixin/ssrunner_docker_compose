@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  chromedriver:
+    image: yinzhenzhixin/chromium_alpine
+    privileged: true
+    restart: always
+    environment:
+      - DISPLAY
+      - SCREEN_GEOMETRY
+      - RFB_PORT
+      - CHROMEDRIVER_WHITELISTED_IPS
+      - CHROMEDRIVER_PORT
+      - CHROMEDRIVER_URL_BASE
+      - CHROMEDRIVER_EXTRA_ARGS
+
+  selenium-side-runner:
+    image: yinzhenzhixin/selenium_side_runner_alpine
+    command: ["sh", "-c", "/selenium_side_runner/ssrunner_trigger.sh"]
+    volumes:
+      - './${SELE_SIDE_RUNNER_TEST_FOLDER}:/selenium_side_runner/${SELE_SIDE_RUNNER_TEST_FOLDER}'
+      - './${SELE_SIDE_RUNNER_REPORT_FOLDER}:/selenium_side_runner/${SELE_SIDE_RUNNER_REPORT_FOLDER}'
