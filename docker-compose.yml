@@ -16,7 +16,7 @@ services:
 
   selenium-side-runner:
     image: yinzhenzhixin/selenium_side_runner_alpine
-    command: ["sh", "-c", "/selenium_side_runner/ssrunner_trigger.sh"]
+    command: ash /selenium_side_runner/ssrunner_trigger.sh
     volumes:
       - './${SELE_SIDE_RUNNER_TEST_FOLDER}:/selenium_side_runner/${SELE_SIDE_RUNNER_TEST_FOLDER}'
       - './${SELE_SIDE_RUNNER_REPORT_FOLDER}:/selenium_side_runner/${SELE_SIDE_RUNNER_REPORT_FOLDER}'
