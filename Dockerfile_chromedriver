@@ -1,4 +1,4 @@
-FROM yinzhenzhixin/xvfb_alpine
+FROM yinzhenzhixin/xvfb:alpine
 
 LABEL Author="Beyond Ma <yinzhenzhixin@gmail.com>"
 

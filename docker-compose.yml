@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   chromedriver:
-    image: yinzhenzhixin/chromium_alpine
+    image: yinzhenzhixin/chromedriver:alpine
     privileged: true
     restart: always
     environment:
@@ -15,7 +15,7 @@ services:
       - CHROMEDRIVER_EXTRA_ARGS
 
   selenium-side-runner:
-    image: yinzhenzhixin/selenium_side_runner_alpine
+    image: yinzhenzhixin/selenium_side_runner:alpine
     command: ash /selenium_side_runner/ssrunner_trigger.sh
     volumes:
       - './${SELE_SIDE_RUNNER_TEST_FOLDER}:/selenium_side_runner/${SELE_SIDE_RUNNER_TEST_FOLDER}'
